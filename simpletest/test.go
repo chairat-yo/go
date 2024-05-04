@@ -103,18 +103,18 @@ func main() {
 	}
 
 	//if with func
-	if justReturnValue() != 2 {
-		halooo.Println("Not 2!!!")
-	}
+	// if justReturnValue() != 2 {
+	// 	halooo.Println("Not 2!!!")
+	// }
 
-	//Statement Initialization
-	if i := 5; i < 10 {
+	// //Statement Initialization
+	// if i := 5; i < 10 {
 
-	}
+	// }
 
-	if i, err := justReturnValue(); i < 5 {
-		halooo.Println(err)
-	}
+	// if i, err := justReturnValue(); i < 5 {
+	// 	halooo.Println(err)
+	// }
 
 	//Early Return
 	token, err := justReturnValue()
