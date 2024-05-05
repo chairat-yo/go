@@ -1,12 +1,12 @@
 package main
 
 import (
-	halooo "fmt"
+	"fmt"
 )
 
 func main() {
 	//hello world
-	halooo.Println("Hello World!")
+	fmt.Println("Hello World!")
 
 	//data types - statically typed language
 	//Go uses type inference
@@ -46,14 +46,14 @@ func main() {
 
 	//Variables
 	var example1 = 3
-	halooo.Println(example1)
+	fmt.Println(example1)
 
 	var example2 int
 	//example2 = 9
-	halooo.Println(example2)
+	fmt.Println(example2)
 
 	// var x, y, z = 'x', "y", `zzzz`
-	// halooo.Println(x)
+	// fmt.Println(x)
 
 	//Block Var
 	// var (
@@ -64,7 +64,7 @@ func main() {
 
 	//Create & Assign
 	test_var := 4
-	halooo.Println(test_var)
+	fmt.Println(test_var)
 
 	//string ("" default)
 	//number (0 default)
@@ -82,7 +82,7 @@ func main() {
 	//const MaxValue = 100
 	//const Surname = "Nakamoto"
 	a, b, _ := multiReturn()
-	halooo.Println(a, b)
+	fmt.Println(a, b)
 
 	//Operators
 	// + +=
@@ -97,14 +97,14 @@ func main() {
 
 	//if-else
 	if 1 > 2 {
-		halooo.Println("Impossible")
+		fmt.Println("Impossible")
 	} else {
-		halooo.Println("1<2")
+		fmt.Println("1<2")
 	}
 
 	//if with func
 	// if justReturnValue() != 2 {
-	// 	halooo.Println("Not 2!!!")
+	// 	fmt.Println("Not 2!!!")
 	// }
 
 	// //Statement Initialization
@@ -113,13 +113,13 @@ func main() {
 	// }
 
 	// if i, err := justReturnValue(); i < 5 {
-	// 	halooo.Println(err)
+	// 	fmt.Println(err)
 	// }
 
 	//Early Return
 	token, err := justReturnValue()
 	if err != "" {
-		halooo.Println(token)
+		fmt.Println(token)
 		return
 	}
 
@@ -127,19 +127,130 @@ func main() {
 	x := 3
 	switch x {
 	case 1:
-		halooo.Println("1")
+		fmt.Println("1")
 	case 2:
-		halooo.Println("2")
+		fmt.Println("2")
 	case 3:
-		halooo.Println("3")
+		fmt.Println("3")
 	default:
-		halooo.Println("default:", x)
+		fmt.Println("default:", x)
 	}
+
+	switch result := calculate(4, 5); { //notice semi colon
+	case result == 20:
+		fmt.Println("Correct!!!")
+	default:
+		fmt.Println("Wrong!!!!!")
+	}
+
+	//Case list
+	switch x {
+	case 1, 2, 3:
+		fmt.Println("1, 2, 3")
+	case 10, 11, 12:
+		fmt.Println("Other")
+	}
+
+	//fallthrough - execute next case even not match!!!
+	switch x {
+	case 1:
+	case 2:
+	case 3:
+		fmt.Println("Case 3!!!!")
+		fallthrough
+	case 4:
+		fmt.Println("not match executed....")
+		fallthrough
+	case 5:
+		fmt.Println("more execution")
+	default:
+		fmt.Println("default")
+	}
+
+	//Loop
+	//for
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
+	}
+
+	//while in go
+	i := 0
+	for i < 10 {
+		fmt.Print(i)
+		i++
+	}
+
+	//for: Infinite
+	fmt.Println()
+	for {
+		if i == 0 {
+			break
+		}
+		fmt.Print(i, ",")
+		i--
+	}
+
+	fmt.Println()
+	//instantiating a structure
+	data1 := Sample{"world", 1, 2}
+	// data := Sample{
+	// 	field: "word",
+	// 	a:     1,
+	// 	b:     2,
+	// }
+
+	fmt.Println(data1)
+
+	data2 := Sample{field1: "xxx"}
+	fmt.Println(data2)
+
+	field1Test := data2.field1
+	fmt.Println("field11Test.field1:", field1Test)
+
+	data2.field1 = "new xxx"
+	fmt.Println("data2 new field1:", data2)
+
+	//Anonymous Structures
+	//anonymous/inline inside function
+	//useful with library functions or shipping data accross a network
+	//define data structures
+	var anonymousSample struct {
+		stringField string
+		int1, int2  int
+	}
+
+	anonymousSample.stringField = "stringField"
+	anonymousSample.int1 = 1
+	anonymousSample.int2 = 2
+	fmt.Println("anonymousSample:", anonymousSample)
+
+	shortSample := struct {
+		stringField string
+		int1, int2  int
+	}{
+		"string1",
+		1, 2,
+	}
+	fmt.Println("shortSample:", shortSample)
+
+}
+
+//Structure
+//~class
+//field in groups -> more efficient
+//can associate functionality
+type Sample struct {
+	field1 string
+	a, b   int
+}
+
+func calculate(x int, y int) int {
+	return x * y
 }
 
 //Functions - camelCase
 func name(param1, param2 float32) float32 {
-	halooo.Print("Func Name")
+	fmt.Print("Func Name")
 	return param1 + param2
 }
 
