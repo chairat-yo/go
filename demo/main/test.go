@@ -8,7 +8,7 @@ func main() {
 	//hello world
 	fmt.Println("Hello World!")
 
-	//data types - statically typed language
+	//lesson 5 data types - statically typed language
 	//Go uses type inference
 	//Signed Integer: int8, int16, int, int32, int64
 
