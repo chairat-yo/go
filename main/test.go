@@ -233,7 +233,186 @@ func main() {
 	}
 	fmt.Println("shortSample:", shortSample)
 
+	//Arrays
+	//var myArray [3]int
+	//myArray := [3]int{7, 8, 9}
+	//myArray := [...]int{7, 8, 9} // ... -> find for us
+	//myArray := [4]int{7, 8, 9}
+	//var myNewArrayTest [3]int
+	myNewArrayTest := [...]int{7, 8, 9, 0, 11, 12, 13, 14, 15}
+	for i := 0; i < len(myNewArrayTest); i++ {
+		fmt.Println("var size array", i)
+	}
+
+	myFixedArrayTest := [3]int{1, 2, 3}
+	for i := 0; i < len(myFixedArrayTest); i++ {
+		fmt.Println("fixed size array", i)
+	}
+
+	//31 +Slices
+	//work with arrays
+	//"View" for array (dynamic)
+	//functions can accept slice
+	//small amount of mem
+	mySlice := []int{1, 2, 3}
+	for i := 0; i < len(mySlice); i++ {
+		fmt.Println("slice:", mySlice[i])
+	}
+	//slice[a:b] a --> start(inclusive), b --> end(exclusive)
+	//slice[:]
+	//slice[1:]
+	//slice[:2]
+	//used to create arrays that can be extended
+	numbers := []int{1, 2, 3}
+	numbers = append(numbers, 4, 5, 6)
+	fmt.Println("Appended Array:", numbers)
+
+	part1 := []int{1, 2, 3}
+	part2 := []int{4, 5, 6}
+	combined := append(part1, part2...)
+	fmt.Println("Combined Array:", combined)
+
+	//pre allocation
+	slice := make([]int, 10)
+	fmt.Println("Allocated Slice:", slice)
+
+	//slices to functions
+	//func funcName(slice []int) {}
+
+	//multidimensional slices
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		{"_", "_", "_"},
+		{"_", "_", "_"}}
+
+	fmt.Println(board)
+
+	//35 Map
+	//unordered
+	//extremely high performance
+	myMap := make(map[string]int)
+
+	// myMap := map[string]int{
+	// 	"item 1": 1,
+	// 	"item 2": 2,
+	// 	"item 3": 3,
+	// }
+
+	fmt.Println("myMap:", myMap)
+
+	//Map Operations
+	//Insert
+	myMap["favorite number"] = 5
+	//Read
+	fav := myMap["favorite number"]
+	missing := myMap["age"]
+	fmt.Println("favorite number:", fav, "missing:", missing)
+
+	//Delete
+	delete(myMap, "favorite number")
+	fmt.Println("deleted map:", myMap)
+
+	//Check Map
+	noname, found := myMap["noname"]
+	if !found {
+		fmt.Println("noname not found:", noname)
+	}
+
+	//Iteration
+	for key, value := range myMap {
+		fmt.Println("Key:", key, "Value:", value)
+	}
+
+	//Map Demo
+	shoppingList := make(map[string]int)
+	shoppingList["eggs"] = 11
+	shoppingList["milk"] = 1
+	shoppingList["bread"] += 1
+	shoppingList["eggs"] += 1
+	fmt.Println("shoppingList:", shoppingList)
+
+	//Pointers
+	//Go is "pass by value"
+	//var valuePtr *int
+	//valuePtr := &value
+	value := 10
+	var valuePtr *int
+	valuePtr = &value
+	fmt.Println("valuePtr:", valuePtr)
+
+	//Dereference Demo
+	i = 1
+	increment(&i)
+	fmt.Println("Dereference value:", i)
+
+	//Lesson 43 Receiver Functions
+	//modified function signature --> dot notation
+
+	//iota
+	//const
+	//iota --> auto assign values
+	const ( //short-form
+		Online = iota
+		Offline
+		Maintenance
+		Retired
+
+	//49 Text formatting
+	//fmt
+	//Fprint --> stream
+	//Sprint --> new string
+
+	//Prinf verbs
+	//%v	default
+	//%t	true/false
+	//%c	Character
+	//%X	Hex
+	//%U	Unicode
+	//%e	Scientific
+
+	//Escape Sequences
+	// \\
+	// \'
+	// \"
+	// \n
+	// \u or \U
+	// \x Raw bytes
+	)
+
+	//Skipping Values
+	const (
+		s0 = iota
+		_
+		_
+		s3
+		s4
+	)
+
+	const (
+		i3 = iota + 3
+		i4
+		i5
+	)
 }
+
+//Dereference Pointers
+func increment(x *int) {
+	*x += 1
+}
+
+//Receiver Function
+// func (coord *Coordinate) shiftBy(x, y int) {
+// 	coord.X += x
+// 	coord.Y += y
+// }
+
+//Receiver Value
+
+//var myTestArray = [...]int{7, 8, 9}
+// for i := 0; i < 10 i++ {
+// 	item := myTestArray[i]
+// 	fmt.Println(item)
+// }
 
 //Structure
 //~class
