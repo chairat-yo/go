@@ -281,7 +281,7 @@ func main() {
 
 	//multidimensional slices
 	board := [][]string{
-		[]string{"_", "_", "_"},
+		{"_", "_", "_"},
 		{"_", "_", "_"},
 		{"_", "_", "_"}}
 
