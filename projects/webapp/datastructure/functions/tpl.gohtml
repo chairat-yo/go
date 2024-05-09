@@ -7,12 +7,12 @@
 <body>
 <ul>
     {{range .Wisdom}}
-    <li>{{.Name}} - {{.Motto}}</li>
+    <li>{{ft .Name}} - {{ft .Motto}}</li>
     {{end}}
 </ul>
 <ul>
     {{range .Transport}}
-    <li>{{.Manufacturer}} - {{.Model}} {{.Doors}}</li>
+    <li>{{uc .Manufacturer}} - {{uc .Model}} {{uc .Doors}}</li>
     {{end}}
 </ul>
 </body>
